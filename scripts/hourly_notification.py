@@ -148,14 +148,14 @@ def notification(con):
 
     # Notify MIN
     if (min_found):
-      min_str =  "New MIN {0} temp of {1: 3.2f}F/{2: 3.2f}C in {3}.".format(group, new_min_fahrenheit, new_min_celsius, new_min_beacon)
+      min_str =  "New MIN {0} temp of {1: 3.2f}F/{2: 3.2f}C in {3}.\nPrevious MIN was {4: 3.2f}F/{5: 3.2f}C.".format(group, new_min_fahrenheit, new_min_celsius, new_min_beacon, history_min_fahrenheit, history_min_celsius)
       print min_str
       group_summary_status += "  {0}\n".format(min_str)
       slackwh.post2slack(min_str)
   
     # Notify MAX
     if (max_found):
-      max_str = "New MAX {0} temp of {1: 3.2f}F/{2: 3.2f}C in {3}.".format(group, new_max_fahrenheit, new_max_celsius, new_max_beacon)
+      max_str = "New MAX {0} temp of {1: 3.2f}F/{2: 3.2f}C in {3}.\nPrevious MAX was {4: 3.2f}F/{5: 3.2f}C.".format(group, new_max_fahrenheit, new_max_celsius, new_max_beacon, history_max_fahrenheit, history_max_celsius)
       print max_str
       group_summary_status += "  {0}\n".format(max_str)
       slackwh.post2slack(max_str)
@@ -167,9 +167,10 @@ def notification(con):
       status_str += "{0} MAX: {1: 3.2f}F\n".format(diff_max_beacon, diff_max_fahrenheit,)
       print status_str
       group_summary_status += status_str
-      slackwh.post2slack(status_str)
+      # This is too chatty now.  Ranges are all over the place causing accuracy to be questioned.
+      #slackwh.post2slack(status_str)
 
-    slackwh.debug2slack(group_summary_status)
+    #slackwh.debug2slack(group_summary_status)
 
   cur.close();
 

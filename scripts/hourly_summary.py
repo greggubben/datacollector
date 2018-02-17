@@ -163,7 +163,7 @@ def summarize(con):
   print ""
   print summary_stat
   print ""
-  slackwh.debug2slack(summary_stat)
+  #slackwh.debug2slack(summary_stat)
 
 #
 # Find out if any beacons are no longer reporting
