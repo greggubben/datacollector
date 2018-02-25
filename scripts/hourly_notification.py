@@ -116,7 +116,7 @@ def notification(con):
         group_summary_status += "      New Historic MIN\n"
 
       # Is this the lowest of the Min?
-      if (min_celsius < new_min_celsius):
+      if (int(min_celsius) < int(new_min_celsius)):
         new_min_celsius = min_celsius
         new_min_fahrenheit = min_fahrenheit
         new_min_beacon = beacon
@@ -134,7 +134,7 @@ def notification(con):
         group_summary_status += "      New Historic MAX\n"
 
       # Is this the highest of the Max?
-      if (max_celsius > new_max_celsius):
+      if (int(max_celsius) > int(new_max_celsius)):
         new_max_celsius = max_celsius
         new_max_fahrenheit = max_fahrenheit
         new_max_beacon = beacon
